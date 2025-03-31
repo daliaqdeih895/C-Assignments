@@ -76,7 +76,7 @@ void convertSentenceToPigLatin(char* sentence) {
 int main() {
     char input[1000];
     int choice;
-
+ 
     printf("Input: ");
     scanf("%d", &choice);
     getchar();  // To clear the newline character from the input buffer
