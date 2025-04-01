@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <ctype.h>
+#include <ctype.h> // Code that indicates characters will be converted into strings or other characters
 #include <string.h>
 
 int is_consonant(char c) {
-    // Check if the character is a consonant (ignore case)
+    // Check if the character is a consonant, set it to ignore the capitalization/case
     return (isalpha(c) && !strchr("AEIOUaeiou", c));
 }
 
@@ -23,11 +23,11 @@ void to_pig_latin(char *word) {
         return;
     }
 
-    // Find the first consonant cluster
+    // Find the first consonant of a word
     while (is_consonant(word[i]) && i < length) {
         first_consonant_cluster[j++] = word[i++];
     }
-    first_consonant_cluster[j] = '\0';  // Null-terminate the consonant cluster
+    first_consonant_cluster[j] = '\0';  
 
     // If the word starts with a vowel, just add 'ay'
     if (j == 0) {
@@ -59,7 +59,7 @@ void translate_sentence_to_pig_latin(char *sentence) {
         i++;
     }
 
-    // Print the last word if the sentence ends without punctuation
+    // If the sentence ends without punctuation, print the last word
     if (word_index > 0) {
         word[word_index] = '\0';
         to_pig_latin(word);
@@ -69,14 +69,14 @@ void translate_sentence_to_pig_latin(char *sentence) {
 int main() {
     char sentence[500];
     
-    // Prompt the user for input
+    // Prompt the user to input a sentence for translating
     printf("Input: ");
     fgets(sentence, sizeof(sentence), stdin);
     
-    // Remove trailing newline character from fgets
+    // Remove potential trailing newline characters
     sentence[strcspn(sentence, "\n")] = 0;
     
-    // Translate the sentence
+    // Command that translates the sentence
     translate_sentence_to_pig_latin(sentence);
     printf("\n");
 
